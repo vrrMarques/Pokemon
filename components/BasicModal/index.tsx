@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import { useEffect,useState } from 'react';
 import axios from 'axios';
 
+
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -21,21 +22,30 @@ const style = {
 export default function BasicModal({pokemon}:any) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+
+  
+
   const handleClose = () => setOpen(false);
   const [details,setDetails] = useState<any>([])
   
-  
 
-  useEffect(() =>{
+  const getOnePokemon = () =>{
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
     .then((res) => setDetails(res.data))
     .catch((err) => console.log(err));
-  },[])
+  }
 
+  useEffect(() =>{
+    getOnePokemon()
+  },[open])
 
   return (
     <div>
-      <Button onClick={handleOpen} sx={{backgroundColor:"red", color:"white"}} size="large">{pokemon.name}</Button>
+      <Button onClick={handleOpen} sx={{backgroundColor:"red", color:"white"}} size="large">
+        <Typography variant='h6'>
+        {pokemon.name}
+        </Typography>
+        </Button>
       <Modal
         open={open}
         onClose={handleClose}

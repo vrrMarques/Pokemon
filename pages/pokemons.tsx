@@ -1,25 +1,42 @@
 import { Grid,Box } from "@mui/material";
 import axios from "axios"
 import { useState,useEffect } from "react";
-import Navbar from '../components/Navbar'
+import Navbar_pokemon from '../components/Navbar_pokemon'
 import BasicModal from '../components/BasicModal'; 
 
 export default function Pokemons() {
   const [pokemons, setPokemons] = useState([]);
-  
 
-      useEffect(() =>{
+
+      const getPokemons = () =>{
         axios.get('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
         .then((res) => setPokemons(res.data.results))
         .catch((err) => console.log(err));
+      }
+
+      useEffect(() =>{
+        getPokemons()
       },[])
 
-
+      const pokemonFilter = (name:any) => {
+        
+        if(name === ''){
+          getPokemons()
+        }
+        let filteredPokemons:any = []
+        for(let i in pokemons){
+          //@ts-ignore
+          if(pokemons[i].name.includes(name)){  
+            filteredPokemons.push(pokemons[i])
+          }
+        }
+        setPokemons(filteredPokemons)
+      }
 
     return (
       <Box>
-          <Navbar  />
-          <Grid container spacing={4} sx={{display:"flex", marginTop:"1rem", marginLeft:"2rem"}}>
+          <Navbar_pokemon  pokemonFilter={pokemonFilter}/>
+          <Grid container spacing={4} sx={{display:"flex", justifyContent:"center",marginTop:"1rem"}}>
           {pokemons.map((pokemon, key) => (
             <Grid item xs = {2} sm={1.6} key={key}>
               <BasicModal pokemon = {pokemon}/>
