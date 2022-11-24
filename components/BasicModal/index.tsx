@@ -41,7 +41,7 @@ export default function BasicModal({pokemon}:any) {
 
   return (
     <div>
-      <Button onClick={handleOpen} sx={{backgroundColor:"red", color:"white"}} size="large">
+      <Button onClick={handleOpen} sx={{backgroundColor:"red", color:"white", width:"80%"}} size="large">
         <Typography variant='h6'>
         {pokemon.name}
         </Typography>

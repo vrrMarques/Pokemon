@@ -6,6 +6,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-image: url('../public/images/wallpaper.jpg');
   background-size: 100%;
+  background-repeat:no-repeat;
+  background-color: #242324;
     
 }
 

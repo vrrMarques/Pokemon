@@ -38,7 +38,7 @@ export default function Pokemons() {
           <Navbar_pokemon  pokemonFilter={pokemonFilter}/>
           <Grid container spacing={4} sx={{display:"flex", justifyContent:"center",marginTop:"1rem"}}>
           {pokemons.map((pokemon, key) => (
-            <Grid item xs = {2} sm={1.6} key={key}>
+            <Grid item lg={1.6} md={3} sm={4} key={key}>
               <BasicModal pokemon = {pokemon}/>
             </Grid>
           ))}
