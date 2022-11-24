@@ -9,6 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Link from 'next/link';
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
+import { ButtonBase } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -54,6 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar({pokemonFilter}:any) {
   
+  
   return (
     <Box sx={{ flexGrow: 1}}>
       <AppBar position="static" sx={{background:"black"}}>
@@ -77,15 +79,20 @@ export default function SearchAppBar({pokemonFilter}:any) {
           >
             <img src="/images/logo.png" alt="logo" className='logo'/>
           </Typography>
-          <Search onChange={(e:any) => pokemonFilter(e.target.value)}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          
+          <form>
+            <Search onClick={(e:any) => pokemonFilter(e.target.value)} >
+              <SearchIconWrapper sx={{cursor:"pointer"}}>
+              <ButtonBase><SearchIcon /></ButtonBase>
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
+          </form>
+          
+          
         </Toolbar>
       </AppBar>
     </Box>

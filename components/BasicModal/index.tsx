@@ -25,7 +25,10 @@ export default function BasicModal({pokemon}:any) {
 
   
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false)
+    window.location.reload()
+  }
   const [details,setDetails] = useState<any>([])
   
 
