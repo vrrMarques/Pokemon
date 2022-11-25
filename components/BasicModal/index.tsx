@@ -13,10 +13,10 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: '#911616',
+  border: '10px solid #000',
   boxShadow: 24,
-  p: 4,
+  
 };
 
 export default function BasicModal({pokemon}:any) {
@@ -42,7 +42,7 @@ export default function BasicModal({pokemon}:any) {
   return (
     <div>
       <Button onClick={handleOpen} sx={{backgroundColor:"red", color:"white", width:"80%"}} size="large">
-        <Typography variant='h6'>
+        <Typography variant='subtitle1'>
         {pokemon.name}
         </Typography>
         </Button>
@@ -51,17 +51,19 @@ export default function BasicModal({pokemon}:any) {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        sx={{color:"white"}}
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            <h2>{pokemon.name}</h2> 
+          <Typography id="modal-modal-title" variant="h4" component="h2" sx={{display:'flex',justifyContent:'center',textTransform:"uppercase", marginTop:"20px"}}>
+            {pokemon.name} 
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          
+          <Typography id="modal-modal-description" sx={{ mt: 1, display:"inline-block",marginLeft:"15%",fontFamily:"American Typewriter, serif", letterSpacing:"2px", textAlign:"center" }}>
           {details.stats && details.stats.map((stats:any,key:any) => {
               return(
                 <div key={key}>
                     <span>{stats.stat.name}: </span>
-                    <span>{stats.base_stat}</span>
+                    <span className='tittle'>{stats.base_stat}</span>
                 </div>
               )
             })}
@@ -71,7 +73,7 @@ export default function BasicModal({pokemon}:any) {
                 <div key={key}>
                     <div>
                       <span>tipo: </span>
-                      <span>{types.type.name}</span>
+                      <span className='tittle'>{types.type.name}</span>
                     </div>
                     
                 </div>
@@ -89,8 +91,9 @@ export default function BasicModal({pokemon}:any) {
             })}
             <br/>
 
-            <img src={details.sprites && details.sprites.other.dream_world.front_default} alt={pokemon.name} />
+            
           </Typography>
+          <img src={details.sprites && details.sprites.other.dream_world.front_default} alt={pokemon.name} className='pokeImg'/>
         </Box>
       </Modal>
     </div>

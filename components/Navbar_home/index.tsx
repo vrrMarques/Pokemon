@@ -4,8 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link';
 
 export default function Navbar_home() {
   return (
@@ -13,9 +12,12 @@ export default function Navbar_home() {
       <AppBar position="static" sx={{background:"black"}}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, }}>
-            Pokemon
+          <img src="/images/logo.png" alt="logo" className='logo'/>
+
           </Typography>
-          <ButtonBase color="inherit">Sobre</ButtonBase>
+          <ButtonBase color="inherit">
+            <Link href="https://github.com/vrrmarques">Sobre</Link>
+            </ButtonBase>
         </Toolbar>
       </AppBar>
     </Box>

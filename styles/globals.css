@@ -26,4 +26,12 @@ a {
   display: flex;
 }
 
+.tittle{
+  color:black
+}
+
+.pokeImg{
+  width: 10rem;
+
+}
 
